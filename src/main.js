@@ -40,15 +40,18 @@ async function loadnote() {
 
     // Créer un élément <h2> pour l'ID et le titre
     const headerEl = document.createElement("div");
-    headerEl.textContent = `${note.id} - title : ${note.title}`;
+    headerEl.classList.add("note-header");
+    headerEl.textContent = `${note.title}`;
     noteEl.appendChild(headerEl);
 
     // Créer un élément <p> pour le contenu
-    const contentEl = document.createElement("p");
+    const contentEl = document.createElement("textarea");
+    contentEl.classList.add("note-content");
     contentEl.textContent = note.content;
     noteEl.appendChild(contentEl);
 
     const deleteBtn = document.createElement("button");
+    deleteBtn.classList.add("button-delete");
     deleteBtn.textContent = "Delete";
     deleteBtn.addEventListener("click", async () => {
       // Appeler la commande "deletenote" avec l'ID de la note
@@ -68,10 +71,26 @@ async function loadnote() {
       savetitleInputEl.value = note.title;
       savecontentInputEl.value = note.content;
 
-      // Sauvegarder l'ID
-      savedNoteId = note.id; // Variable globale pour l'ID de la note
+      if (savedNoteId === note.id) {
+        // Supprimer la classe "selected-note" de toutes les notes
+        document.querySelectorAll('.note-item').forEach(item => {
+          item.classList.remove('selected-note');
+        });
+        // Réinitialiser les champs de saisie
+        savetitleInputEl.value = null;
+        savecontentInputEl.value = null;
+        // Réinitialiser l'ID sauvegardé
+        savedNoteId = null;
+      } else {
+        savedNoteId = note.id;// Variable globale pour l'ID de la note
+        // Supprimer la classe "selected-note" de toutes les notes
+        document.querySelectorAll('.note-item').forEach(item => {
+          item.classList.remove('selected-note');
+        });
+        // Ajouter la classe "selected-note" à la note sélectionnée
+        noteEl.classList.add('selected-note');
+      }
     });
-
     notesEl.appendChild(noteEl);
   });
 }

@@ -7,29 +7,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>NotApp</title>
   <script type="module" src="/main.js" defer></script>
-  <style>
-    /* Your styles here */
-  </style>
 </head>
 
 <body>
   <div class="container">
     <h1>Welcome to NotApp!</h1>
-    <p>Créer une note</p>
 
     <form class="column" id="savenote-form">
       <input id="savetitle-input" placeholder="Enter a Title..." />
-      <input id="savecontent-input" placeholder="Enter a note..." />
+      <textarea id="savecontent-input" placeholder="Enter a content..."></textarea>
 
       <div class="button-container">
-        <button type="submit">Save Note</button>
+
+        <button type="submit" id="save-note-btn">Save Note</button>
+
         <button type="button" id="update-note-btn" title="il faut cliquer sur une note pour la supprimer">update
           Note</button>
       </div>
 
     </form>
     <div class="notes">
-      <h2>Notes</h2>
+      <h2>Notes :</h2>
       <ul id="notes-list">
         <!-- Notes will be added here -->
       </ul>
