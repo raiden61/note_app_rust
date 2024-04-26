@@ -42,13 +42,20 @@ async function loadnote() {
     const headerEl = document.createElement("div");
     headerEl.classList.add("note-header");
     headerEl.textContent = `${note.title}`;
+    // Ajouter le titre à la noteEl
     noteEl.appendChild(headerEl);
 
     // Créer un élément <p> pour le contenu
     const contentEl = document.createElement("textarea");
     contentEl.classList.add("note-content");
     contentEl.textContent = note.content;
+    // Ajouter le contenu à la noteEl
     noteEl.appendChild(contentEl);
+
+    const divbuttonEl = document.createElement("div");
+    divbuttonEl.classList.add("div-button");
+    // Ajouter la divbuttonEl à la noteEl
+    noteEl.appendChild(divbuttonEl);
 
     const deleteBtn = document.createElement("button");
     deleteBtn.classList.add("button-delete");
@@ -64,7 +71,8 @@ async function loadnote() {
       // Recharger la liste des notes
       loadnote();
     });
-    noteEl.appendChild(deleteBtn);
+    // Ajouter le bouton de suppression à la divbuttonEl
+    divbuttonEl.appendChild(deleteBtn);
     // Ajouter un event listener au clic
     noteEl.addEventListener("click", () => {
       // Remplis les champs de saisie avec les valeurs de la note
@@ -91,6 +99,7 @@ async function loadnote() {
         noteEl.classList.add('selected-note');
       }
     });
+    // Ajouter la note à la liste
     notesEl.appendChild(noteEl);
   });
 }

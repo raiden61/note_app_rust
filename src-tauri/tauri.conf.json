@@ -18,9 +18,9 @@
     },
     "windows": [
       {
-        "title": "notapp",
-        "width": 800,
-        "height": 600
+        "title": "Note'App",
+        "width": 1000,
+        "height": 800
       }
     ],
     "security": {
@@ -29,14 +29,7 @@
     "bundle": {
       "active": true,
       "targets": "all",
-      "identifier": "com.tauri.dev",
-      "icon": [
-        "icons/32x32.png",
-        "icons/128x128.png",
-        "icons/128x128@2x.png",
-        "icons/icon.icns",
-        "icons/icon.ico"
-      ]
+      "identifier": "com.tauri.dev"
     }
   }
 }
